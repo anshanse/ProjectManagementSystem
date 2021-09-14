@@ -52,7 +52,7 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
             } else if("get".equals(operation) || "delete".equals(operation)) id = Long.parseLong(responseArray[2]);
 
             if        ("get".equals(operation)){
-                service.read(modelClass, id);
+                System.out.println(service.read(modelClass, id));
             } else if ("delete".equals(operation)) {
                 service.delete(modelClass, id);
             } else if ("create".equals(operation)) {
@@ -60,6 +60,7 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
             } else if ("update".equals(operation)) {
                 service.update(modelClass);
             }
+            System.out.println("\nInput command: ");
             response = in.next();
         }
     }

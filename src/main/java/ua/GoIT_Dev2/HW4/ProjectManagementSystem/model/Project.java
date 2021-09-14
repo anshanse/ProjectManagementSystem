@@ -29,9 +29,9 @@ public class Project implements BaseEntity<Long> {
     @Column(name = "cost")
     private int cost;
 
-    @Column(name = "company_id")
+    /*@Column(name = "company_id")
     private Long companyId;
 
     @Column(name = "customer_id")
-    private Long customerId;
+    private Long customerId;*/
 }

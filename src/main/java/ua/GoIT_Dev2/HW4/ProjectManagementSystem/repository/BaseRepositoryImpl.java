@@ -76,8 +76,7 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
 
     @Override
     public T getOne(ID id) {
-        return findById(id)
-                .orElseThrow(()-> new RuntimeException("Entity with id " + id + " not found"));
+        return findById(id).orElseThrow(()-> new RuntimeException("Entity with id " + id + " not found"));
     }
 
     @SneakyThrows
