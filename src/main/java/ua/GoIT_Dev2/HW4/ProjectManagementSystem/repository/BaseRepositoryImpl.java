@@ -49,7 +49,7 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
                 ? modelClass.getAnnotation(Entity.class).name() : modelClass.getSimpleName().toLowerCase();
         String countValues = IntStream.range(0, columnFieldName.size()).mapToObj(i -> "?").collect(Collectors.joining(","));
         String fieldsForCreate = columnFieldName.keySet().stream().collect(Collectors.joining(","));
-        String fieldsForUpdate = columnFieldName.keySet().stream().map(v -> v + "?").collect(Collectors.joining(","));
+        String fieldsForUpdate = columnFieldName.keySet().stream().map(v -> v + "=?").collect(Collectors.joining(","));
 
         this.findAllPreparedStatement = connection.prepareStatement("SELECT * FROM " + dbSchemaName + "." + tableName, generatedColumns);
         this.findByIdPreparedStatement = connection.prepareStatement("SELECT * FROM " + dbSchemaName + "." + tableName + " WHERE id=?;", generatedColumns);
