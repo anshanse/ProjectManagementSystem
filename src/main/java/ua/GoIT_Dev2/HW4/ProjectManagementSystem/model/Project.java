@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serial;
+import java.util.Date;
 
 @Data
 @Builder
@@ -28,6 +29,9 @@ public class Project implements BaseEntity<Long> {
 
     @Column(name = "cost")
     private int cost;
+
+    @Column(name = "start_date")
+    private Date startDate;
 
     /*@Column(name = "company_id")
     private Long companyId;

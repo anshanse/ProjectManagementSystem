@@ -1,6 +1,7 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.DeveloperService;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class HandlerDevSkill extends ProjectManagementHandler {
         System.out.print("Input skill:");
         String skill = in.next();
         System.out.println("Developers with skill in " + skill + ":");
-        DevRepository.devWithSkill(skill);
+        DeveloperService.getDevWithSkill(skill);
     }
 
     @Override

@@ -2,7 +2,6 @@ package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.BaseRepositoryImpl;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.RepositoryFactory;
 
 import javax.persistence.Column;
@@ -52,7 +51,7 @@ public class BaseService<E extends BaseEntity<ID>, ID> {
         for (Map.Entry<String,String> element : mapColumnField.entrySet()) {
             String key = element.getValue();
             //System.out.println(String.format("input %s : ",key));
-            String response = DataService.verifyInputData(key,modelClass,in);
+            String response = DataValidator.verifyInputData(key,modelClass,in);
             mapEntity.put(key,response);
         }
         ObjectMapper jacksonMapper = new ObjectMapper();

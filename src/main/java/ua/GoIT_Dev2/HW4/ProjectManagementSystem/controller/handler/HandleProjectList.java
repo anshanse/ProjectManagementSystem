@@ -2,6 +2,7 @@ package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler.ProjectManagementHandler;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.ProjectRepository;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.ProjectService;
 
 public class HandleProjectList extends ProjectManagementHandler {
 
@@ -12,7 +13,7 @@ public class HandleProjectList extends ProjectManagementHandler {
     @Override
     protected void apply() {
         System.out.println("Project list:");
-        ProjectRepository.projectList();
+        ProjectService.getProjectList();
     }
 
     @Override

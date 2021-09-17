@@ -1,6 +1,7 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.DeveloperService;
 
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class HandlerSumSalary extends ProjectManagementHandler {
         System.out.print("Input project ID:");
         int id = in.nextInt();
         System.out.println("The salary of developers in project with ID=" + id + " is:");
-        DevRepository.sumSalaryDevsOnProject(id);
+        DeveloperService.getSumSalaryDevsOnProject(id);
     }
 
     @Override

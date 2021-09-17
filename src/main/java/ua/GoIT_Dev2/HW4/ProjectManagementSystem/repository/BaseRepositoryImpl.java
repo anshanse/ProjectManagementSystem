@@ -33,7 +33,6 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
 
     @SneakyThrows
     public BaseRepositoryImpl(Class<T> modelClass) {
-
         this.connection = DBConnection.getInstance().getConnection();
         this.dbSchemaName = PropertiesLoader.getProperty("db.name");
         this.mapper = new ObjectMapper();
@@ -51,13 +50,13 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
         String fieldsForCreate = columnFieldName.keySet().stream().collect(Collectors.joining(","));
         String fieldsForUpdate = columnFieldName.keySet().stream().map(v -> v + "=?").collect(Collectors.joining(","));
 
-        this.findAllPreparedStatement = connection.prepareStatement("SELECT * FROM " + dbSchemaName + "." + tableName, generatedColumns);
-        this.findByIdPreparedStatement = connection.prepareStatement("SELECT * FROM " + dbSchemaName + "." + tableName + " WHERE id=?;", generatedColumns);
-        this.deletePreparedStatement = connection.prepareStatement("DELETE FROM " + dbSchemaName + "." + tableName + " WHERE id=?;",generatedColumns);
-        this.createPreparedStatement = connection.prepareStatement("INSERT INTO " + dbSchemaName + "." + tableName + " ("
+        this.findAllPreparedStatement = connection.prepareStatement("SELECT * FROM " + tableName, generatedColumns);
+        this.findByIdPreparedStatement = connection.prepareStatement("SELECT * FROM " + tableName + " WHERE id=?;", generatedColumns);
+        this.deletePreparedStatement = connection.prepareStatement("DELETE FROM " + tableName + " WHERE id=?;",generatedColumns);
+        this.createPreparedStatement = connection.prepareStatement("INSERT INTO " + tableName + " ("
                 + fieldsForCreate + ")" + " VALUES (" + countValues + ");", generatedColumns);
-        this.updatePreparedStatement = connection.prepareStatement("UPDATE " + dbSchemaName + "." + tableName + " SET " + fieldsForUpdate
-                + " WHERE id=?;", generatedColumns);
+        this.updatePreparedStatement = connection.prepareStatement(
+                "UPDATE " + tableName + " SET " + fieldsForUpdate + " WHERE id=?", generatedColumns);
     }
 
     private String getColumnName (Field field){
@@ -130,17 +129,24 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
     }
 
     @SneakyThrows
-    private T executeStatement (PreparedStatement prStatement, T t){
-        int count =1;
-        for (String fieldName : columnFieldName.values()){
+    private T executeStatement(PreparedStatement preparedStatement, T t) {
+        int count = 1;
+        for (String fieldName : columnFieldName.values()) {
             Field declaredField = modelClass.getDeclaredField(fieldName);
             declaredField.setAccessible(true);
-            prStatement.setObject(count++, declaredField.get(t));
+            preparedStatement.setObject(count++, declaredField.get(t));
         }
-        prStatement.executeUpdate();
-        ResultSet result = prStatement.getGeneratedKeys();
-        result.next();
-        return findById((ID) result.getObject(1)).get();
+        preparedStatement.executeUpdate();
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        generatedKeys.next();
+        ID id;
+        try {
+            id = (ID) generatedKeys.getObject(1);
+        }
+        catch (Exception e){
+            id = t.getId();
+        }
+        return findById(id).get();
     }
 
 }
