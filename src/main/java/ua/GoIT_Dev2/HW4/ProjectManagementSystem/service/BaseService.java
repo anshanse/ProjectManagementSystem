@@ -54,8 +54,7 @@ public class BaseService<E extends BaseEntity<ID>, ID> {
             mapEntity.put(key,response);
         }
         ObjectMapper jacksonMapper = new ObjectMapper();
-        BaseEntity convertValue = (BaseEntity) jacksonMapper.convertValue(mapEntity, modelClass);
-        return convertValue;
+        return (BaseEntity) jacksonMapper.convertValue(mapEntity, modelClass);
     }
 
     private String getColumn(Field modelField) {

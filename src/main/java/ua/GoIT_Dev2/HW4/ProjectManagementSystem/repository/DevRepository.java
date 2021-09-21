@@ -17,7 +17,7 @@ public class DevRepository extends BaseRepositoryImpl{
                 "JOIN developers_projects dp ON developers.id = dp.developers_id " +
                 "JOIN projects p ON p.id = dp.projects_id " +
                 "WHERE projects_id = " + id;
-        printMessage.printResult(queryService.sendQuery(sql));;
+        printMessage.printResult(queryService.sendQuery(sql));
     }
 
     public void devWithSkill (String skill){
@@ -25,7 +25,7 @@ public class DevRepository extends BaseRepositoryImpl{
                 "JOIN developers_skills ds ON developers.id = ds.developers_id " +
                 "JOIN skills s ON s.id = ds.skills_id  " +
                 "WHERE skill = '" + skill + "' ORDER BY name asc";
-        printMessage.printResult(queryService.sendQuery(sql));;
+        printMessage.printResult(queryService.sendQuery(sql));
     }
 
     public void devWithGrade (String grade) {
@@ -33,6 +33,6 @@ public class DevRepository extends BaseRepositoryImpl{
                 "JOIN developers_skills ds ON developers.id = ds.developers_id " +
                 "JOIN skills s ON s.id = ds.skills_id  " +
                 "WHERE grade = '" + grade + "' ORDER BY name asc";
-        printMessage.printResult(queryService.sendQuery(sql));;
+        printMessage.printResult(queryService.sendQuery(sql));
     }
 }
