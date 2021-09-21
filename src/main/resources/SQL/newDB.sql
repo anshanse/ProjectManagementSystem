@@ -53,28 +53,28 @@ CREATE TABLE developers_projects(
 	developers_id INT NOT NULL,
 	projects_id INT NOT NULL,
 	-- PRIMARY KEY (developers_id,projects_id),
-	FOREIGN KEY (developers_id) references developers(id),
-	FOREIGN KEY (projects_id) references projects(id));
+	FOREIGN KEY (developers_id) references developers(id) ON DELETE CASCADE,
+	FOREIGN KEY (projects_id) references projects(id) ON DELETE CASCADE);
 
 CREATE TABLE companies_projects(
 	companies_id INT NOT NULL,
 	projects_id INT NOT NULL,
 	-- PRIMARY KEY (companies_id,projects_id),
-	FOREIGN KEY (companies_id) references companies(id),
-	FOREIGN KEY (projects_id) references projects(id));
+	FOREIGN KEY (companies_id) references companies(id) ON DELETE CASCADE,
+	FOREIGN KEY (projects_id) references projects(id) ON DELETE CASCADE);
 	
 
 CREATE TABLE customers_projects(
 	customers_id INT NOT NULL,
 	projects_id INT NOT NULL,
 	-- PRIMARY KEY (customers_id,projects_id),
-	FOREIGN KEY (customers_id) references customers(id),
-	FOREIGN KEY (projects_id) references projects(id));
+	FOREIGN KEY (customers_id) references customers(id) ON DELETE CASCADE,
+	FOREIGN KEY (projects_id) references projects(id) ON DELETE CASCADE);
 	
 
 CREATE TABLE developers_skills(
 	developers_id INT NOT NULL,
 	skills_id INT NOT NULL,
 	-- PRIMARY KEY (developers_id,skills_id),
-	FOREIGN KEY (developers_id) references developers(id),
-	FOREIGN KEY (skills_id) references skills(id));
+	FOREIGN KEY (developers_id) references developers(id) ON DELETE CASCADE,
+	FOREIGN KEY (skills_id) references skills(id) ON DELETE CASCADE);

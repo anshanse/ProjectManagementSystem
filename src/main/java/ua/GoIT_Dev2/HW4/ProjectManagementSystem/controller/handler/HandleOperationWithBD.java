@@ -1,6 +1,8 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import lombok.SneakyThrows;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.OutputMessage;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.BaseService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.PropertiesLoader;
 
@@ -14,24 +16,17 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
         super(handler);
     }
     private final BaseService service = new BaseService();
+    private final OutputMessage printMessage = new OutputMessage();
 
     @SneakyThrows
     @Override
     protected void apply() {
 
-        String startMessage =
-                "print a formatted string for operations with tables (company, customer, developer, project, skill):\n" +
-                        "    for CREATE:  create-{table}\n" +
-                        "    for READ:    get-{table}-{id}\n" +
-                        "    for UPDATE:  update-{table}\n" +
-                        "    for DELETE:  delete-{table}-{id}\n" +
-                        "    for help:    help\n" +
-                        "    for exit:    exit";
-        System.out.println(startMessage);
+        printMessage.welcomeMessage();
         String response = in.next();
         while (!"exit".equals(response)){
             if ("help".equals(response)){
-                System.out.println(startMessage);
+                printMessage.welcomeMessage();
                 response = in.next();
                 continue;
             }
@@ -53,12 +48,18 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
 
             if        ("get".equals(operation)){
                 System.out.println(service.read(modelClass, id));
+                printMessage.welcomeMessage();
             } else if ("delete".equals(operation)) {
                 service.delete(modelClass, id);
+                printMessage.welcomeMessage();
             } else if ("create".equals(operation)) {
-                service.create(modelClass);
+                BaseEntity entity = service.create(modelClass);
+                System.out.println("Was create " + modelClass.getName() + ": " + entity);
+                printMessage.welcomeMessage();
             } else if ("update".equals(operation)) {
-                service.update(modelClass);
+                BaseEntity entity = service.update(modelClass);
+                System.out.println("Was updated " + modelClass.getName() + ": " + entity);
+                printMessage.welcomeMessage();
             }
             System.out.println("\nInput command: ");
             response = in.next();

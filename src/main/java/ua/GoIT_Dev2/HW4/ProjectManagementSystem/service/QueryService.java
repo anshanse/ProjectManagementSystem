@@ -13,7 +13,7 @@ import java.util.List;
 public class QueryService{
 
     @SneakyThrows
-    public static List<String> sendQuery(String sql){
+    public List<String> sendQuery(String sql){
         Connection connection = DBConnection.getInstance().getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -21,7 +21,7 @@ public class QueryService{
     }
 
     @SneakyThrows
-    private static List<String> resultSetToList (ResultSet rs){
+    private List<String> resultSetToList (ResultSet rs){
         List<String> rsList = new ArrayList<>();
         ResultSetMetaData rsmd = rs.getMetaData();
         int columns = rsmd.getColumnCount();

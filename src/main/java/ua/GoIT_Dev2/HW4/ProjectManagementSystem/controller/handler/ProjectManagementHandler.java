@@ -1,5 +1,8 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.Developer;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
+
 public abstract class ProjectManagementHandler {
 
     private final ProjectManagementHandler handler;

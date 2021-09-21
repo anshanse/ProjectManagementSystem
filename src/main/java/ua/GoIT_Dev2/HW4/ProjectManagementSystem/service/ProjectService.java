@@ -1,14 +1,17 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
 
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.Project;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.ProjectRepository;
 
 public class ProjectService {
 
-    public static void getDevsOnProject (int id){
-        ProjectRepository.fetchDevsOnProject(id);
+    private final ProjectRepository repository = new ProjectRepository(Project.class);
+
+    public void getDevsOnProject (int id){
+        repository.fetchDevsOnProject(id);
     }
 
-    public static void getProjectList(){
-        ProjectRepository.getProjectList();
+    public void getProjectList(){
+        repository.getProjectList();
     }
 }

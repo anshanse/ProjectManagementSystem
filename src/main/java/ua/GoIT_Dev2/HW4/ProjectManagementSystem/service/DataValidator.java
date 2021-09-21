@@ -13,7 +13,7 @@ public class DataValidator {
     @SneakyThrows
     public static String verifyInputData(String key, Class modelClass, Scanner in){
         String input = "";
-        String textMatch = "\\w+";
+        String textMatch = "[A-Za-z0-9\\s]+";
         String warningMessage = String.format("input %s : ",key);
         //System.out.println(key);
         Field field = modelClass.getDeclaredField(key);
@@ -24,6 +24,10 @@ public class DataValidator {
         if (field.getType().equals(Date.class)){
             textMatch = "\\d{4}-\\d{2}-\\d{2}";
             warningMessage = String.format("Input %s in format (yyyy-mm-dd): ", key);
+        }
+        if ("sex".equals(key)){
+            textMatch = "[mf]";
+            warningMessage = String.format("Input %s (m/f): ", key);
         }
         while (!input.matches(textMatch)){
             System.out.println(warningMessage);

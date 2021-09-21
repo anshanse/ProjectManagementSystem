@@ -1,18 +1,21 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
 
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.Developer;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
 
 public class DeveloperService {
 
-    public static void getSumSalaryDevsOnProject (int id){
-        DevRepository.sumSalaryDevsOnProject(id);
+    private final DevRepository repository = new DevRepository(Developer.class);
+
+    public void getSumSalaryDevsOnProject (int id){
+        repository.sumSalaryDevsOnProject(id);
     }
 
-    public static void getDevWithSkill (String skill){
-        DevRepository.devWithSkill(skill);
+    public void getDevWithSkill (String skill){
+        repository.devWithSkill(skill);
     }
 
-    public static void getDevWithGrade (String grade){
-        DevRepository.devWithGrade(grade);
+    public void getDevWithGrade (String grade){
+        repository.devWithGrade(grade);
     }
 }
