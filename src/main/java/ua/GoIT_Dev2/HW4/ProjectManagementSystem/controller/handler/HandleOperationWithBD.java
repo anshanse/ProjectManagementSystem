@@ -1,7 +1,7 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import lombok.SneakyThrows;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.OutputMessage;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.BaseService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.PropertiesLoader;

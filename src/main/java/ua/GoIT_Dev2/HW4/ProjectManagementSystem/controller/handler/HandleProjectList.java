@@ -1,8 +1,6 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.OutputMessage;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler.ProjectManagementHandler;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.ProjectRepository;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.ProjectService;
 
 public class HandleProjectList extends ProjectManagementHandler {
@@ -18,7 +16,6 @@ public class HandleProjectList extends ProjectManagementHandler {
     protected void apply() {
         System.out.println("Project list: ");
         service.getProjectList();
-        printMessage.welcomeMessage();
     }
 
     @Override

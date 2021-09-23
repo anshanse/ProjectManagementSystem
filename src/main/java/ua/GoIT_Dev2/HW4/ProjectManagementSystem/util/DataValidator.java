@@ -1,4 +1,4 @@
-package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
+package ua.GoIT_Dev2.HW4.ProjectManagementSystem.util;
 
 import lombok.SneakyThrows;
 

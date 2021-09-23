@@ -2,8 +2,8 @@ package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.BaseRepositoryImpl;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.RepositoryFactory;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DataValidator;
 
 import javax.persistence.Column;
 import java.lang.reflect.Field;

@@ -1,8 +1,6 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.OutputMessage;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler.ProjectManagementHandler;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.DeveloperService;
 
 import java.util.Scanner;
@@ -23,7 +21,6 @@ public class HandlerDevGrade extends ProjectManagementHandler {
         String grade = in.next();
         System.out.println("Developers with " + grade + " grade in any skill: ");
         service.getDevWithGrade(grade);
-        printMessage.welcomeMessage();
     }
 
     @Override

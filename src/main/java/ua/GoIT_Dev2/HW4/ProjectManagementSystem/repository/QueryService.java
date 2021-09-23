@@ -1,4 +1,4 @@
-package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
+package ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository;
 
 import lombok.SneakyThrows;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DBConnection;
