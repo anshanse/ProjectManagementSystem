@@ -17,7 +17,7 @@ public class HandlerDevOnProject extends ProjectManagementHandler {
     @Override
     protected void apply() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Input project ID:");
+        System.out.print("Input project ID: ");
         int id = in.nextInt();
         System.out.println("Developers working on project with ID=" + id + ": ");
         service.getDevsOnProject(id);

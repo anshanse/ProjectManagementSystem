@@ -15,7 +15,7 @@ public class ProjectRepository extends BaseRepositoryImpl{
     }
 
     public String getProjectList(){
-        String sql = "SELECT start_date, project_name, count(name) FROM  projects " +
+        String sql = "SELECT start_date, project_name, count(name) AS 'developers' FROM  projects " +
                 "JOIN  developers_projects dp ON  projects.id = dp.projects_id " +
                 "JOIN  developers d on d.id = dp.developers_id " +
                 "GROUP BY  project_name ORDER BY project_name asc;";

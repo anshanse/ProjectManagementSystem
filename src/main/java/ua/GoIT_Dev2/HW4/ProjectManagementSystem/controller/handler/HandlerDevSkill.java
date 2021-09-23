@@ -17,7 +17,7 @@ public class HandlerDevSkill extends ProjectManagementHandler {
     @Override
     protected void apply() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Input skill:");
+        System.out.print("Input skill: ");
         String skill = in.next();
         System.out.println("Developers with skill in " + skill + ": ");
         service.getDevWithSkill(skill);

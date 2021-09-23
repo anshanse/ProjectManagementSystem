@@ -17,7 +17,7 @@ public class HandlerSumSalary extends ProjectManagementHandler {
     @Override
     protected void apply() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Input project ID:");
+        System.out.print("Input project ID: ");
         int id = in.nextInt();
         System.out.println("The salary of developers in project with ID=" + id + " is: ");
         service.getSumSalaryDevsOnProject(id);
