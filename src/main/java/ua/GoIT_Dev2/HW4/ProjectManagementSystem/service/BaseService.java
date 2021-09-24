@@ -1,10 +1,11 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.ReadData;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.RepositoryFactory;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DataValidator;
-
 import javax.persistence.Column;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class BaseService<E extends BaseEntity<ID>, ID> {
 
-    private final Scanner in = new Scanner(System.in);
+    private final ReadData readData = new ReadData();
 
     public E create(Class<E> modelClass){
         Map<String,String> mapColumnField = Arrays.stream(modelClass.getDeclaredFields())
@@ -41,16 +42,15 @@ public class BaseService<E extends BaseEntity<ID>, ID> {
     }
 
     public void delete(Class<E> modelClass, ID id){
-        Optional<E> deleteEntity = RepositoryFactory.of(modelClass).findById(id);
         RepositoryFactory.of(modelClass).deleteById(id);
-        System.out.println("Was deleted " + modelClass.getName()+ ": " + deleteEntity);
     }
 
+    @SneakyThrows
     private BaseEntity getEntity(Map<String,String> mapColumnField, Class modelClass){
         Map<String,String> mapEntity = new HashMap<>();
         for (Map.Entry<String,String> element : mapColumnField.entrySet()) {
             String key = element.getValue();
-            String response = DataValidator.verifyInputData(key,modelClass,in);
+            String response = readData.readField(modelClass.getDeclaredField(key));
             mapEntity.put(key,response);
         }
         ObjectMapper jacksonMapper = new ObjectMapper();

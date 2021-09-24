@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DBConnection;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.PropertiesLoader;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.QueryService;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
@@ -24,6 +25,7 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
     private final Class<T> modelClass;
     private final Map<String,String> columnFieldName;
     private final String dbSchemaName;
+    private final QueryService queryService = new QueryService();
 
     private final PreparedStatement findAllPreparedStatement;
     private final PreparedStatement findByIdPreparedStatement;
@@ -147,6 +149,13 @@ public class BaseRepositoryImpl<T extends BaseEntity<ID>, ID> implements BaseRep
             id = t.getId();
         }
         return findById(id).get();
+    }
+
+    @SneakyThrows
+    public List<String> sendQuery(String sql){
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sql);
+        return queryService.resultSetToList(resultSet);
     }
 
 }

@@ -1,27 +1,15 @@
-package ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository;
+package ua.GoIT_Dev2.HW4.ProjectManagementSystem.util;
 
 import lombok.SneakyThrows;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DBConnection;
-
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class QueryService{
 
     @SneakyThrows
-    public List<String> sendQuery(String sql){
-        Connection connection = DBConnection.getInstance().getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
-        return resultSetToList(resultSet);
-    }
-
-    @SneakyThrows
-    private List<String> resultSetToList (ResultSet rs){
+    public List<String> resultSetToList (ResultSet rs){
         List<String> rsList = new ArrayList<>();
         ResultSetMetaData rsmd = rs.getMetaData();
         int columns = rsmd.getColumnCount();

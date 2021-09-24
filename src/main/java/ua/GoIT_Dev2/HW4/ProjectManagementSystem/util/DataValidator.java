@@ -36,4 +36,19 @@ public class DataValidator {
         return input;
     }
 
+    public boolean validateInputData (String inputData, Field field){
+        String textMatch = "[A-Za-z0-9\\s]+";
+        //Field field = modelClass.getDeclaredField(key);
+        if (field.getType().equals(Integer.TYPE) || field.getName().contains("id") || field.getName().contains("Id")){
+            textMatch = "\\d+";
+        }
+        if (field.getType().equals(Date.class)){
+            textMatch = "\\d{4}-\\d{2}-\\d{2}";
+        }
+        if ("sex".equals(field.getName())){
+            textMatch = "[mf]";
+        }
+        return inputData.matches(textMatch);
+    }
+
 }

@@ -1,11 +1,12 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import lombok.SneakyThrows;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.BaseEntity;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.RepositoryFactory;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.BaseService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.PropertiesLoader;
-
+import java.util.Optional;
 import java.util.Scanner;
 
 public class HandleOperationWithBD extends ProjectManagementHandler {
@@ -16,17 +17,17 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
         super(handler);
     }
     private final BaseService service = new BaseService();
-    private final OutputMessage printMessage = new OutputMessage();
+    private final MessageService message = new MessageService();
 
     @SneakyThrows
     @Override
     protected void apply() {
 
-        printMessage.welcomeMessage();
+        message.welcomeMessage();
         String response = in.next();
         while (!"exit".equals(response)){
             if ("help".equals(response)){
-                printMessage.welcomeMessage();
+                message.welcomeMessage();
                 response = in.next();
                 continue;
             }
@@ -48,18 +49,23 @@ public class HandleOperationWithBD extends ProjectManagementHandler {
 
             if        ("get".equals(operation)){
                 System.out.println(service.read(modelClass, id));
-                printMessage.welcomeMessage();
+                message.welcomeMessage();
             } else if ("delete".equals(operation)) {
+                Optional<BaseEntity> deleteEntity = RepositoryFactory.of(modelClass).findById(id);
                 service.delete(modelClass, id);
-                printMessage.welcomeMessage();
+                System.out.println("Was deleted " + modelClass.getName()+ ": " + deleteEntity);
+                message.welcomeMessage();
             } else if ("create".equals(operation)) {
                 BaseEntity entity = service.create(modelClass);
                 System.out.println("Was create " + modelClass.getName() + ": " + entity);
-                printMessage.welcomeMessage();
+                message.welcomeMessage();
             } else if ("update".equals(operation)) {
                 BaseEntity entity = service.update(modelClass);
                 System.out.println("Was updated " + modelClass.getName() + ": " + entity);
-                printMessage.welcomeMessage();
+                message.welcomeMessage();
+            }
+            else {
+                message.inputCorrectData();
             }
             System.out.println("\nInput command: ");
             response = in.next();

@@ -1,6 +1,6 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.ProjectService;
 
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class HandlerDevOnProject extends ProjectManagementHandler {
 
     private final ProjectService service = new ProjectService();
-    private final OutputMessage printMessage = new OutputMessage();
+    private final MessageService printMessage = new MessageService();
 
     public HandlerDevOnProject(ProjectManagementHandler handler) {
         super(handler);

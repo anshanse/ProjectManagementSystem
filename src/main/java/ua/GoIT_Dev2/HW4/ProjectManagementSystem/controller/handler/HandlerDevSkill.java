@@ -1,6 +1,6 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.OutputMessage;
+import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.DeveloperService;
 
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class HandlerDevSkill extends ProjectManagementHandler {
     }
 
     private final DeveloperService service = new DeveloperService();
-    private final OutputMessage printMessage = new OutputMessage();
+    private final MessageService printMessage = new MessageService();
 
     @Override
     protected void apply() {

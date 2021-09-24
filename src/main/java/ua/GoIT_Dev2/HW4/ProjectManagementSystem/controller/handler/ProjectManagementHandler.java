@@ -1,8 +1,5 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.Developer;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.DevRepository;
-
 public abstract class ProjectManagementHandler {
 
     private final ProjectManagementHandler handler;
@@ -22,6 +19,6 @@ public abstract class ProjectManagementHandler {
 
     public static ProjectManagementHandler of(){
         return new HandlerSumSalary(new HandlerDevOnProject(new HandlerDevSkill(
-                new HandlerDevGrade(new HandleProjectList(new HandleOperationWithBD(new HandlerExit()))))));
+                new HandlerDevGrade(new HandleProjectList(new HandleOperationWithBD(new HandleWrongInput(new HandlerExit())))))));
     }
 }
