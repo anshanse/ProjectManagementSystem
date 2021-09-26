@@ -1,7 +1,5 @@
 package ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository;
 
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.QueryService;
-
 import java.util.List;
 
 public class ProjectRepository extends BaseRepositoryImpl{

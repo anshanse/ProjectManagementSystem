@@ -6,8 +6,20 @@ import java.util.List;
 
 public class MessageService {
 
-    public void welcomeMessage (){
-        String startMessage =
+    public void queryOperationMessage(){
+        String queryPromptMessage =
+                "1 - The salary of developers in project\n" +
+                        "2 - Developers working on the project\n" +
+                        "3 - Developers with skill\n" +
+                        "4 - Developers with grade\n" +
+                        "5 - Project list\n" +
+                        "6 - Operation with BD\n" +
+                        "0 - Exit";
+        System.out.println(queryPromptMessage);
+    }
+
+    public void dbOperationMessage(){
+        String dbPromptMessage =
                 "\nprint a formatted string for operations with tables (company, customer, developer, project, skill):\n" +
                         "    for CREATE:  create-{table}\n" +
                         "    for READ:    get-{table}-{id}\n" +
@@ -15,7 +27,7 @@ public class MessageService {
                         "    for DELETE:  delete-{table}-{id}\n" +
                         "    for help:    help\n" +
                         "    for exit:    exit";
-        System.out.println(startMessage);
+        System.out.println(dbPromptMessage);
     }
 
     public void printResult(List<String> resultData){

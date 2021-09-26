@@ -20,7 +20,7 @@ public class HandlerDevSkill extends ProjectManagementHandler {
         System.out.print("Input skill: ");
         String skill = in.next();
         System.out.println("Developers with skill in " + skill + ": ");
-        service.getDevWithSkill(skill);
+        printMessage.printResult(service.getDevWithSkill(skill));
     }
 
     @Override

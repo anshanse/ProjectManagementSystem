@@ -1,7 +1,4 @@
-package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller;
-
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.DataValidator;
-import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
+package ua.GoIT_Dev2.HW4.ProjectManagementSystem.util;
 
 import java.lang.reflect.Field;
 import java.util.Scanner;

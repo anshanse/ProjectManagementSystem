@@ -2,7 +2,6 @@ package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.ProjectService;
-
 import java.util.Scanner;
 
 public class HandlerDevOnProject extends ProjectManagementHandler {
@@ -20,7 +19,7 @@ public class HandlerDevOnProject extends ProjectManagementHandler {
         System.out.print("Input project ID: ");
         int id = in.nextInt();
         System.out.println("Developers working on project with ID=" + id + ": ");
-        service.getDevsOnProject(id);
+        printMessage.printResult(service.getDevsOnProject(id));
     }
 
     @Override

@@ -20,7 +20,7 @@ public class HandlerDevGrade extends ProjectManagementHandler {
         System.out.print("Input grade: ");
         String grade = in.next();
         System.out.println("Developers with " + grade + " grade in any skill: ");
-        service.getDevWithGrade(grade);
+        printMessage.printResult(service.getDevWithGrade(grade));
     }
 
     @Override

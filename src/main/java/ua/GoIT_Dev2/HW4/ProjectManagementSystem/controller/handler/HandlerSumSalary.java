@@ -3,6 +3,7 @@ package ua.GoIT_Dev2.HW4.ProjectManagementSystem.controller.handler;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.service.DeveloperService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class HandlerSumSalary extends ProjectManagementHandler {
@@ -20,7 +21,7 @@ public class HandlerSumSalary extends ProjectManagementHandler {
         System.out.print("Input project ID: ");
         int id = in.nextInt();
         System.out.println("The salary of developers in project with ID=" + id + " is: ");
-        service.getSumSalaryDevsOnProject(id);
+        printMessage.printResult(service.getSumSalaryDevsOnProject(id));
     }
 
     @Override

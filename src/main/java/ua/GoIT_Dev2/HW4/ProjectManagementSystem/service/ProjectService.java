@@ -4,16 +4,17 @@ import ua.GoIT_Dev2.HW4.ProjectManagementSystem.model.Project;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.repository.ProjectRepository;
 import ua.GoIT_Dev2.HW4.ProjectManagementSystem.util.MessageService;
 
+import java.util.List;
+
 public class ProjectService {
 
     private final ProjectRepository repository = new ProjectRepository(Project.class);
-    private final MessageService printMessage = new MessageService();
 
-    public void getDevsOnProject (int id){
-        printMessage.printResult(repository.fetchDevsOnProject(id));
+    public List<String> getDevsOnProject (int id){
+        return repository.fetchDevsOnProject(id);
     }
 
-    public void getProjectList(){
-        printMessage.printResult(repository.getProjectList());
+    public List<String> getProjectList(){
+        return repository.getProjectList();
     }
 }
